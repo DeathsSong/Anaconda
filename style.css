@@ -18,5 +18,9 @@ img {
     margin-right: auto;
     display: block;
     width: 500px;
-    background-color: rgba(212, 235, 39, 0.669);
+    background-color: rgb(255, 220, 159);
+}
+#mouse {
+    display: none;
+    width: 20px;
 }

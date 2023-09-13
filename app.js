@@ -23,10 +23,8 @@ const gridSize = 20;
 const snakeColor = 'green';
 
 const mouseImage = new Image();
-mouseImage.src = 'mouse-transparent-background.png';
-mouseImage.onload = function () {
+mouseImage.src = 'mouse-transparent-background-smol.png';
 
-}
 
 
 
@@ -41,26 +39,35 @@ function createGameBoard() {
 };
 
 function createSnake(snakePieces) {
+    context.fillStyle = 'green';
+    for (const piece of snake) {
+        context.fillRect(piece.x, piece.y, gridSize, gridSize);
+    };
     //Create the snake
     //Keep track of snake pieces (aka: when it grows)
     //Creates each piece as the snake grows
-}
+};
 
-function createMouse(mousePosition) {
+function createMouse(mouseObject) {
     //Create the mice
     //Generate the mice in random, unoccupied positions on the board
-}
+    mouseObject.x = Math.floor(Math.random() * (canvas.width / gridSize)) * gridSize;
+    mouseObject.y = Math.floor(Math.random() * (canvas.height / gridSize)) * gridSize;
+    context.drawImage(mouseImage, mouseObject.x, mouseObject.y, gridSize, gridSize);
+};
+const mouse ={};
+createMouse(mouse);
 
 function gameLoop() {
     //Make the game loop
     //Call other functions in a specific order
-}
+};
 
 function keepScore() {
     //Keep game score
-}
+};
 
 function keepTime() {
     //Keep game play time
-}
+};
 
