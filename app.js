@@ -38,7 +38,7 @@ mouseImage.onload = function () {
 
 function createGameBoard() {
     //Function to set up and display the play area for the game
-    context.fillStyle = 'lightgray';
+    context.fillStyle = 'rgb(255, 220, 159)';
     for (let row = 0; row < canvas.height; row += gridSize) {
         for (let col = 0; col < canvas.clientWidth; col += gridSize) {
             context.fillRect(col, row, gridSize, gridSize);
@@ -47,11 +47,11 @@ function createGameBoard() {
 };
 
 function createSnake(snakePieces) {
+    //Create the snake
     context.fillStyle = 'green';
     for (const piece of snake) {
         context.fillRect(piece.x, piece.y, gridSize, gridSize);
     };
-    //Create the snake
     //Keep track of snake pieces (aka: when it grows)
     //Creates each piece as the snake grows
 };
@@ -63,7 +63,6 @@ function createMouse(mouseObject) {
     //Draw the mouse image at the mouse's position with the specified dimensions
     context.drawImage(mouseImage, mouseObject.x, mouseObject.y, gridSize, gridSize);
 };
-// createMouse(mouse);
 
 function clearCanvas() {
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -86,5 +85,3 @@ function keepScore() {
 function keepTime() {
     //Keep game play time
 };
-
-// gameLoop();
