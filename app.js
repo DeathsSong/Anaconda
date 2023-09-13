@@ -22,8 +22,16 @@ const gridSize = 20;
 
 const snakeColor = 'green';
 
+const mouse ={
+    x: 0,
+    y: 0,
+};
+
 const mouseImage = new Image();
 mouseImage.src = 'mouse-transparent-background-smol.png';
+mouseImage.onload = function () {
+    gameLoop();
+}
 
 
 
@@ -49,17 +57,25 @@ function createSnake(snakePieces) {
 };
 
 function createMouse(mouseObject) {
-    //Create the mice
     //Generate the mice in random, unoccupied positions on the board
     mouseObject.x = Math.floor(Math.random() * (canvas.width / gridSize)) * gridSize;
     mouseObject.y = Math.floor(Math.random() * (canvas.height / gridSize)) * gridSize;
+    //Draw the mouse image at the mouse's position with the specified dimensions
     context.drawImage(mouseImage, mouseObject.x, mouseObject.y, gridSize, gridSize);
 };
-const mouse ={};
-createMouse(mouse);
+// createMouse(mouse);
+
+function clearCanvas() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+};
 
 function gameLoop() {
     //Make the game loop
+    clearCanvas();
+    createGameBoard();
+    createMouse(mouse);
+    createSnake(snake);
+    requestAnimationFrame(gameLoop);
     //Call other functions in a specific order
 };
 
@@ -71,3 +87,4 @@ function keepTime() {
     //Keep game play time
 };
 
+// gameLoop();
