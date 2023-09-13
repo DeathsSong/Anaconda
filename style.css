@@ -24,3 +24,8 @@ img {
     display: none;
     width: 20px;
 }
+h5 {
+    color: white;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
