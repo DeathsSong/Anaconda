@@ -18,19 +18,27 @@ const canvas = document.getElementById('gameCanvas');
 
 const context = canvas.getContext('2d');
 
+const gridSize = 20;
+
 const snakeColor = 'green';
 
-const mouseImage = document.getElementsByClassName('mouse')
+const mouseImage = new Image();
+mouseImage.src = 'mouse-transparent-background.png';
+mouseImage.onload = function () {
 
-const gridSize = 20;
+}
+
 
 
 function createGameBoard() {
     //Function to set up and display the play area for the game
+    context.fillStyle = 'lightgray';
     for (let row = 0; row < canvas.height; row += gridSize) {
-
-    }
-}
+        for (let col = 0; col < canvas.clientWidth; col += gridSize) {
+            context.fillRect(col, row, gridSize, gridSize);
+        };
+    };
+};
 
 function createSnake(snakePieces) {
     //Create the snake
@@ -47,3 +55,12 @@ function gameLoop() {
     //Make the game loop
     //Call other functions in a specific order
 }
+
+function keepScore() {
+    //Keep game score
+}
+
+function keepTime() {
+    //Keep game play time
+}
+
