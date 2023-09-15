@@ -23,7 +23,9 @@ const context = canvas.getContext('2d');
 
 const gridSize = 20;
 
-const snake = [{x:2, y:2}];
+const snake = [{x:20, y:20}];
+
+const snakeHead = snake[0];
 
 const mouse ={
     x: 0,
@@ -52,8 +54,13 @@ function createGameBoard() {
 function createSnake(snakePieces) {
     //Create the snake
     context.fillStyle = 'green';
-    for (const piece of snake) {
-        context.fillRect(piece.x, piece.y, gridSize, gridSize);
+    for (let i = 0; i < snake.length; i++) {
+        if (i === 0) {
+            context.fillStyle = 'rgb(99, 231, 59)'; //Head color
+        } else {
+            context.fillStyle = 'green'; //Body color
+        };
+        context.fillRect(snake[i].x, snake[i].y, gridSize, gridSize);
     };
 };
 
@@ -77,7 +84,7 @@ function gameLoop() {
     createSnake(snake);
     moveSnake();
     checkMouseCollision();
-    checkCollision();
+    checkWallCollision();
     requestAnimationFrame(gameLoop);
     //Call other functions in a specific order
 };
@@ -93,7 +100,7 @@ function keepTime() {
 function controlSnake() {
     //Creates each piece as the snake grows
     //Controls snake
-    const head = {...snake[0]};
+    const head = {...snakeHead};
     if (direction === 'up') {
         head.y -= gridSize;
     } else if (direction === 'down') {
@@ -106,8 +113,8 @@ function controlSnake() {
     snake.unshift(head);
     if (!ateMouse) {
         snake.pop();
-    }
-}
+    };
+};
 
 let ateMouse = false;
 
