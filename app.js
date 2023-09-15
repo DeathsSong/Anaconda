@@ -25,8 +25,6 @@ const gridSize = 20;
 
 const snake = [{x:2, y:2}];
 
-const snakeColor = 'green'; //temporary holding for snake object
-
 const mouse ={
     x: 0,
     y: 0,
@@ -77,6 +75,9 @@ function gameLoop() {
     createGameBoard();
     createMouse(mouse);
     createSnake(snake);
+    moveSnake();
+    checkMouseCollision();
+    checkCollision();
     requestAnimationFrame(gameLoop);
     //Call other functions in a specific order
 };
