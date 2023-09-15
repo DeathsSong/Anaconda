@@ -1,4 +1,7 @@
 /*
+💡If growth too challenging, after eating mouse space turns into empty space that can either cause game over or just a simple empty space
+💡Maybe after mouse is eaten, random block spaces appear for challenge
+
 ⭐Start Button
 ⭐Up Button
 ⭐Left Button
@@ -20,7 +23,9 @@ const context = canvas.getContext('2d');
 
 const gridSize = 20;
 
-const snakeColor = 'green';
+const snake = [{x:2, y:2}];
+
+const snakeColor = 'green'; //temporary holding for snake object
 
 const mouse ={
     x: 0,
@@ -29,9 +34,9 @@ const mouse ={
 
 const mouseImage = new Image();
 mouseImage.src = 'mouse-transparent-background-smol.png';
-mouseImage.onload = function () {
+mouseImage.onload = function () { //mouse appears every time game is loaded fix
     gameLoop();
-}
+};
 
 
 
@@ -52,8 +57,6 @@ function createSnake(snakePieces) {
     for (const piece of snake) {
         context.fillRect(piece.x, piece.y, gridSize, gridSize);
     };
-    //Keep track of snake pieces (aka: when it grows)
-    //Creates each piece as the snake grows
 };
 
 function createMouse(mouseObject) {
@@ -84,4 +87,36 @@ function keepScore() {
 
 function keepTime() {
     //Keep game play time
+};
+
+function controlSnake() {
+    //Creates each piece as the snake grows
+    //Controls snake
+    const head = {...snake[0]};
+    if (direction === 'up') {
+        head.y -= gridSize;
+    } else if (direction === 'down') {
+        head.y += gridSize;
+    } else if (direction === 'left') {
+        head.x -= gridSize;
+    } else if (direction === 'right') {
+        head.x += gridSize;
+    };
+    snake.unshift(head);
+    if (!ateMouse) {
+        snake.pop();
+    }
+}
+
+let ateMouse = false;
+
+function checkMouseCollision() {
+    //Check if both the snake and the mouse are in the same square
+    if (snake[0].x === mouse.x && snake[0].y === mouse.y) {
+        ateMouse = true;
+        food.x = Math.floor(Math.random() * (canvas.width / gridSize)) * gridSize;
+        food.y = Math.floor(Math.random() * (canvas.height / gridSize)) * gridSize;
+    } else {
+        ateMouse = false;
+    };
 };
