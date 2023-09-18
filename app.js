@@ -158,7 +158,7 @@ function controlSnake() {
     } else if (direction === 'right') {
         newHead.x += gridSize;
         console.log("move right");
-    }
+    };
 
     // Add the new head to the beginning of the snake
     snake.unshift(newHead);
@@ -168,8 +168,8 @@ function controlSnake() {
     if (!ateMouse) {
         // If the snake didn't eat the mouse, remove the last element to keep the length constant
         snake.pop();
-    }
-}
+    };
+};
 
 let ateMouse = false;
 
@@ -181,5 +181,5 @@ function checkMouseCollision() {
         spawnMouse(); // Call this when the snake consumes the mouse
     } else {
         ateMouse = false;
-    }
-}
+    };
+};
