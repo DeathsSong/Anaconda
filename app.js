@@ -195,3 +195,7 @@ function checkMouseCollision() {
         ateMouse = false;
     };
 };
+
+function gameOver() {
+    //Write function with a pop out box that says "game over" and has a button with the words "Try again?"
+}
