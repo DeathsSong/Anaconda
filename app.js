@@ -79,7 +79,7 @@ function createMouse(mouseObject) {
     // mouseObject.x = Math.floor(Math.random() * (canvas.width / gridSize)) * gridSize;
     // mouseObject.y = Math.floor(Math.random() * (canvas.height / gridSize)) * gridSize;
     //Draw the mouse image at the mouse's position with the specified dimensions
-    context.drawImage(mouseImage, mouseObject.x + canvas.offsetLeft, mouseObject.y + canvas.offsetTop, gridSize, gridSize);
+    context.drawImage(mouseImage, mouseObject.x, mouseObject.y, gridSize, gridSize);
     // console.log("creating mouse");
 };
 
