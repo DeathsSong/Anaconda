@@ -169,6 +169,11 @@ function controlSnake() {
         // If the snake didn't eat the mouse, remove the last element to keep the length constant
         snake.pop();
     };
+    if (newHead.x < 0 || newHead.x >= canvas.width || newHead.y < 0 || newHead.y >= canvas.height) {
+        //If snake hits walls, game over
+        gameOver();
+        return;
+    }
 };
 
 let ateMouse = false;
