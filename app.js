@@ -169,11 +169,18 @@ function controlSnake() {
         // If the snake didn't eat the mouse, remove the last element to keep the length constant
         snake.pop();
     };
+    for (let i = 1; i < snake.length; i++) {
+        if (newHead.x === snake[i].x && newHead.y === snake[i].y) {
+            // Snake collided with itself, it's "dead"
+            gameOver();
+            return; // Stop further processing
+        }
     if (newHead.x < 0 || newHead.x >= canvas.width || newHead.y < 0 || newHead.y >= canvas.height) {
         //If snake hits walls, game over
         gameOver();
         return;
     }
+}
 };
 
 let ateMouse = false;
