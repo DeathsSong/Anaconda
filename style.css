@@ -69,7 +69,7 @@ h6 {
     color: white;
     position: absolute;
     bottom: 500px;
-    right: 100px;
+    right: 15px;
     border: solid;
     padding: 5px;
 }
@@ -78,7 +78,7 @@ h6 {
     color: rgb(255, 255, 255);
     position: absolute;
     bottom: 500px;
-    left: 100px;
+    left: 15px;
     border: solid;
     padding: 5px;
 }

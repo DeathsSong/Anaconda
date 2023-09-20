@@ -33,7 +33,7 @@ const snakeHead = snake[0];
 
 let direction = 'right';
 
-let gameState = 'running';
+let gameState = 'stopped';
 
 const mouse ={
     x: 0,
@@ -220,6 +220,7 @@ function checkMouseCollision() {
 
 function gameOver() {
     //Write function with a pop out box that says "game over" and has a button with the words "Try again?"
+    clearInterval(gameInterval);
     gameState = 'over';
     gameOverPopup.style.display = 'block';
 
@@ -281,3 +282,27 @@ function updateTimer() {
     const elapsedTime = Math.floor((currentTime - startTime) / 1000); // Calculate elapsed seconds
     document.getElementById('timer').textContent = `Time: ${elapsedTime} seconds`;
 }
+
+function startGame() {
+    score = 0;
+    startTime = Date.now();
+    gameInterval = setInterval(updateTimer, 1000); //Updates timer every second
+    snake = [{ x: 20, y: 20 }];
+    direction = 'right'; // Make sure the snake starts off in the right direction
+
+    // Reset other game state variables as needed
+    gameState = 'running';
+    gameOverPopup.style.display = 'none';
+
+    // Spawn the initial mouse
+    spawnMouse();
+
+    // Start the game loop
+    gameLoop();
+}
+
+buttonStart.addEventListener('click', function () {
+    startGame();
+    gameState = 'running';
+    gameLoop();
+});
