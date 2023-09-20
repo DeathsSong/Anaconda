@@ -237,6 +237,7 @@ function resetGame() {
 
 resetButton.addEventListener('click', function () {
     resetGame();
+    resetTimer();
 });
 
 
@@ -299,10 +300,17 @@ function startGame() {
 
     // Start the game loop
     gameLoop();
-}
+};
 
 buttonStart.addEventListener('click', function () {
     startGame();
     gameState = 'running';
     gameLoop();
 });
+
+function resetTimer() {
+    clearInterval(gameInterval); // Clear the previous interval
+    startTime = Date.now(); // Reset the start time
+    gameInterval = setInterval(updateTimer, 1000); // Start a new interval to update the timer
+    updateTimer(); // Update the timer immediately
+};
