@@ -64,3 +64,21 @@ h6 {
       margin-right: -50%;
       transform: translate(-50%, -50%);
 }
+
+#timer {
+    color: white;
+    position: absolute;
+    bottom: 500px;
+    right: 100px;
+    border: solid;
+    padding: 5px;
+}
+
+#score {
+    color: rgb(255, 255, 255);
+    position: absolute;
+    bottom: 500px;
+    left: 100px;
+    border: solid;
+    padding: 5px;
+}

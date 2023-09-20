@@ -269,3 +269,15 @@ function changeDirection(newDirection) {
         canChangeDirection = false;
     };
 };
+
+let score = 0;
+
+let startTime = 0;
+
+let gameInterval;
+
+function updateTimer() {
+    const currentTime = Date.now();
+    const elapsedTime = Math.floor((currentTime - startTime) / 1000); // Calculate elapsed seconds
+    document.getElementById('timer').textContent = `Time: ${elapsedTime} seconds`;
+}
