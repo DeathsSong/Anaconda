@@ -1,20 +1,3 @@
-/*
-💡If growth too challenging, after eating mouse space turns into empty space that can either cause game over or just a simple empty space
-💡Maybe after mouse is eaten, random block spaces appear for challenge
-
-✔️⭐Start Button
-✔️⭐Up Button
-✔️⭐Left Button
-✔️⭐Down Button
-✔️⭐Right Button
-✔️🟣Score Box
-✔️🟣Time Box
-✔️🟣Game Title
-🟣Snake Style
-✔️🟣Mouse Style
-❓Snake Opens Mouth When Near Mouse?
-*/
-
 const startButtonBox = document.getElementsByClassName('start-button-box');
 
 const buttonStart = document.getElementById('button-start');
@@ -50,7 +33,6 @@ function spawnMouse() {
 const mouseImage = new Image();
 mouseImage.src = 'mouse-transparent-background-smol.png';
 mouseImage.onload = function () { //mouse appears every time game is loaded fix
-    // console.log("Mouse spawn");
     spawnMouse();
     gameLoop();
 };
@@ -82,13 +64,7 @@ function createSnake() {
 };
 
 function createMouse(mouseObject) {
-    // console.log("Mouse coordinates:", mouseObject.x, mouseObject.y);
-    //Generate the mice in random, unoccupied positions on the board
-    // mouseObject.x = Math.floor(Math.random() * (canvas.width / gridSize)) * gridSize;
-    // mouseObject.y = Math.floor(Math.random() * (canvas.height / gridSize)) * gridSize;
-    //Draw the mouse image at the mouse's position with the specified dimensions
     context.drawImage(mouseImage, mouseObject.x, mouseObject.y, gridSize, gridSize);
-    // console.log("creating mouse");
 };
 
 function clearCanvas() {
@@ -97,10 +73,6 @@ function clearCanvas() {
 
 let lastUpdateTime = 0;
 const updateRate = 200; // Adjust this value for the desired speed.
-
-// let lastTimestamp = 0;
-
-// const frameRate = 10; // Adjust this value for the desired frame rate (e.g., 10 frames per second)
 
 function gameLoop(timestamp) {
     if (gameState === 'running') {
@@ -124,8 +96,6 @@ function gameLoop(timestamp) {
     // Start the game loop
     requestAnimationFrame(gameLoop);
 
-// gameLoop();
-
 let canChangeDirection = true;
 
 document.addEventListener('keydown', function (event) {
@@ -141,7 +111,6 @@ document.addEventListener('keydown', function (event) {
     };
     canChangeDirection = false;
 };
-// console.log("test");
 });
 
 
@@ -152,16 +121,12 @@ function controlSnake() {
 
     if (direction === 'up') {
         newHead.y -= gridSize;
-        // console.log("move up");
     } else if (direction === 'down') {
         newHead.y += gridSize;
-        // console.log("move down");
     } else if (direction === 'left') {
         newHead.x -= gridSize;
-        // console.log("move left");
     } else if (direction === 'right') {
         newHead.x += gridSize;
-        // console.log("move right");
     };
 
     if (newHead.x < 0 || newHead.x >= canvas.width || newHead.y < 0 || newHead.y >= canvas.height) {
@@ -172,11 +137,6 @@ function controlSnake() {
 
     // Add the new head to the beginning of the snake
     snake.unshift(newHead);
-
-    // console.log("New head x:", newHead.x);
-    // console.log("New head y:", newHead.y);
-    // console.log("Canvas width:", canvas.width);
-    // console.log("Canvas height:", canvas.height);
 
     checkMouseCollision();
 
