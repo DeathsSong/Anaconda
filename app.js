@@ -207,8 +207,9 @@ function checkMouseCollision() {
     if (snake[0].x === mouse.x && snake[0].y === mouse.y) {
         ateMouse = true;
         spawnMouse(); // Call this when the snake consumes the mouse
-        score++;
+        score += 10;
         document.getElementById('score').textContent = `Score: ${score}`;
+        checkWinCondition();
     } else {
         ateMouse = false;
     };
@@ -320,3 +321,22 @@ function resetScore() {
     document.getElementById('score').textContent = `Score: 0`;
 };
 
+function checkWinCondition() {
+    if (score >= 100) {
+        clearInterval(gameInterval);
+        // Display the win pop-up
+        winPopup.style.display = 'block';
+        // Stop the game or perform any other actions as needed
+        gameState = 'over';
+    };
+};
+
+const winPopup = document.getElementById('winPopup');
+const playAgainButton = document.getElementById('playAgainButton');
+
+playAgainButton.addEventListener('click', function () {
+    resetGame();
+    resetTimer();
+    resetScore();
+    winPopup.style.display = 'none';
+});
