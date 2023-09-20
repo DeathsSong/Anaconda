@@ -17,6 +17,10 @@
 
 const buttonStart = document.getElementById('button-start');
 
+const gameOverPopup = document.getElementById('gameOverPopup');
+
+const resetButton = document.getElementById('resetButton');
+
 const canvas = document.getElementById('gameCanvas');
 
 const context = canvas.getContext('2d');
@@ -101,12 +105,13 @@ function gameLoop(timestamp) {
     if (deltaTime >= updateRate) {
         clearCanvas();
         createGameBoard();
+        controlSnake();
         createSnake(snake);
         createMouse(mouse);
-        controlSnake();
         checkMouseCollision();
         lastUpdateTime = timestamp
     }
+    
     canChangeDirection = true;
         // Request the next frame
         requestAnimationFrame(gameLoop);
@@ -142,6 +147,8 @@ document.addEventListener('keydown', function (event) {
 // console.log("test");
 });
 
+
+
 function controlSnake() {
     // Create a new head for the snake based on the current direction
     const newHead = { ...snake[0] };
@@ -163,6 +170,11 @@ function controlSnake() {
     // Add the new head to the beginning of the snake
     snake.unshift(newHead);
 
+    console.log("New head x:", newHead.x);
+    console.log("New head y:", newHead.y);
+    console.log("Canvas width:", canvas.width);
+    console.log("Canvas height:", canvas.height);
+
     checkMouseCollision();
 
     if (!ateMouse) {
@@ -175,15 +187,16 @@ function controlSnake() {
             gameOver();
             return; // Stop further processing
         }
-    if (newHead.x < 0 || newHead.x >= canvas.width || newHead.y < 0 || newHead.y >= canvas.height) {
-        //If snake hits walls, game over
-        gameOver();
-        return;
-    }
-}
+        if (newHead.x < 0 || newHead.x >= canvas.width || newHead.y < 0 || newHead.y >= canvas.height) {
+            // If snake hits walls, game over
+            gameOver();
+            return;
+        };
+    };
 };
 
 let ateMouse = false;
+
 
 
 function checkMouseCollision() {
@@ -198,4 +211,6 @@ function checkMouseCollision() {
 
 function gameOver() {
     //Write function with a pop out box that says "game over" and has a button with the words "Try again?"
-}
+    gameOverPopup.style.display = 'block';
+
+};
