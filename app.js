@@ -228,7 +228,7 @@ function gameOver() {
 function resetGame() {
     gameState = 'running';
     snake = [{ x: 20, y: 20 }]; // Reset the snake to its initial position
-    direction = 'right';
+    direction = 'right'; //Make sure snake starts off in the right direction
     spawnMouse(); // Place a new mouse on the board
     gameOverPopup.style.display = 'none';
     gameLoop();
@@ -237,3 +237,35 @@ function resetGame() {
 resetButton.addEventListener('click', function () {
     resetGame();
 });
+
+
+//Mouse/screen button controls
+document.getElementById('up-arrow').addEventListener('click', function () {
+    changeDirection('up');
+});
+
+document.getElementById('left-arrow').addEventListener('click', function () {
+    changeDirection('left');
+});
+
+document.getElementById('down-arrow').addEventListener('click', function () {
+    changeDirection('down');
+});
+
+document.getElementById('right-arrow').addEventListener('click', function () {
+    changeDirection('right');
+});
+
+function changeDirection(newDirection) {
+    if (canChangeDirection) {
+        if (
+            (newDirection === 'up' && direction !== 'down') ||
+            (newDirection === 'down' && direction !== 'up') ||
+            (newDirection === 'left' && direction !== 'right') ||
+            (newDirection === 'right' && direction !== 'left')
+        ) {
+            direction = newDirection;
+        };
+        canChangeDirection = false;
+    };
+};
