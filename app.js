@@ -15,6 +15,8 @@
 ❓Snake Opens Mouth When Near Mouse?
 */
 
+const startButtonBox = document.getElementsByClassName('start-button-box');
+
 const buttonStart = document.getElementById('button-start');
 
 const gameOverPopup = document.getElementById('gameOverPopup');
@@ -110,27 +112,19 @@ function gameLoop(timestamp) {
                 createMouse(mouse);
                 createSnake(snake);
                 checkMouseCollision();
-                lastUpdateTime = timestamp
-            }
+                lastUpdateTime = timestamp;
+            };
             
             canChangeDirection = true;
             
-        }
+        };
         //request next frame
         requestAnimationFrame(gameLoop);
-    }
+    };
     // Start the game loop
     requestAnimationFrame(gameLoop);
 
 // gameLoop();
-
-function keepScore() {
-    //Keep game score
-};
-
-function keepTime() {
-    //Keep game play time
-};
 
 let canChangeDirection = true;
 
@@ -144,9 +138,9 @@ document.addEventListener('keydown', function (event) {
         direction = 'left';
     } else if (event.key === 'ArrowRight' && direction !== 'left') {
         direction = 'right';
-    }
+    };
     canChangeDirection = false;
-}
+};
 // console.log("test");
 });
 
@@ -174,7 +168,7 @@ function controlSnake() {
         // If the snake's head is out of bounds, it's a collision with the wall
         gameOver();
         return;
-    }
+    };
 
     // Add the new head to the beginning of the snake
     snake.unshift(newHead);
@@ -213,6 +207,8 @@ function checkMouseCollision() {
     if (snake[0].x === mouse.x && snake[0].y === mouse.y) {
         ateMouse = true;
         spawnMouse(); // Call this when the snake consumes the mouse
+        score++;
+        document.getElementById('score').textContent = `Score: ${score}`;
     } else {
         ateMouse = false;
     };
@@ -232,12 +228,14 @@ function resetGame() {
     direction = 'right'; //Make sure snake starts off in the right direction
     spawnMouse(); // Place a new mouse on the board
     gameOverPopup.style.display = 'none';
+
     gameLoop();
 }
 
 resetButton.addEventListener('click', function () {
     resetGame();
     resetTimer();
+    resetScore();
 });
 
 
@@ -282,7 +280,7 @@ function updateTimer() {
     const currentTime = Date.now();
     const elapsedTime = Math.floor((currentTime - startTime) / 1000); // Calculate elapsed seconds
     document.getElementById('timer').textContent = `Time: ${elapsedTime} seconds`;
-}
+};
 
 function startGame() {
     score = 0;
@@ -300,6 +298,8 @@ function startGame() {
 
     // Start the game loop
     gameLoop();
+
+    startButtonBox[0].style.display = 'none';
 };
 
 buttonStart.addEventListener('click', function () {
@@ -314,3 +314,9 @@ function resetTimer() {
     gameInterval = setInterval(updateTimer, 1000); // Start a new interval to update the timer
     updateTimer(); // Update the timer immediately
 };
+
+function resetScore() {
+    score = 0;
+    document.getElementById('score').textContent = `Score: 0`;
+};
+
