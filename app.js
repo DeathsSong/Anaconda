@@ -31,7 +31,9 @@ let snake = [{x:20, y:20}];
 
 const snakeHead = snake[0];
 
-let direction = 'right'
+let direction = 'right';
+
+let gameState = 'running';
 
 const mouse ={
     x: 0,
@@ -99,26 +101,27 @@ const updateRate = 200; // Adjust this value for the desired speed.
 // const frameRate = 10; // Adjust this value for the desired frame rate (e.g., 10 frames per second)
 
 function gameLoop(timestamp) {
-    // console.log("game loop");
-    // setTimeout(function () {
-    const deltaTime = timestamp - lastUpdateTime;
-    if (deltaTime >= updateRate) {
-        clearCanvas();
-        createGameBoard();
-        controlSnake();
-        createSnake(snake);
-        createMouse(mouse);
-        checkMouseCollision();
-        lastUpdateTime = timestamp
-    }
-    
-    canChangeDirection = true;
-        // Request the next frame
+    if (gameState === 'running') {
+            const deltaTime = timestamp - lastUpdateTime;
+            if (deltaTime >= updateRate) {
+                clearCanvas();
+                createGameBoard();
+                controlSnake();
+                createMouse(mouse);
+                createSnake(snake);
+                checkMouseCollision();
+                lastUpdateTime = timestamp
+            }
+            
+            canChangeDirection = true;
+            
+        }
+        //request next frame
         requestAnimationFrame(gameLoop);
-    // }, 500 / frameRate);
-}
+    }
+    // Start the game loop
+    requestAnimationFrame(gameLoop);
 
-// Start the game loop
 // gameLoop();
 
 function keepScore() {
@@ -167,6 +170,12 @@ function controlSnake() {
         console.log("move right");
     };
 
+    if (newHead.x < 0 || newHead.x >= canvas.width || newHead.y < 0 || newHead.y >= canvas.height) {
+        // If the snake's head is out of bounds, it's a collision with the wall
+        gameOver();
+        return;
+    }
+
     // Add the new head to the beginning of the snake
     snake.unshift(newHead);
 
@@ -211,6 +220,20 @@ function checkMouseCollision() {
 
 function gameOver() {
     //Write function with a pop out box that says "game over" and has a button with the words "Try again?"
+    gameState = 'over';
     gameOverPopup.style.display = 'block';
 
 };
+
+function resetGame() {
+    gameState = 'running';
+    snake = [{ x: 20, y: 20 }]; // Reset the snake to its initial position
+    direction = 'right';
+    spawnMouse(); // Place a new mouse on the board
+    gameOverPopup.style.display = 'none';
+    gameLoop();
+}
+
+resetButton.addEventListener('click', function () {
+    resetGame();
+});
