@@ -2,16 +2,16 @@
 💡If growth too challenging, after eating mouse space turns into empty space that can either cause game over or just a simple empty space
 💡Maybe after mouse is eaten, random block spaces appear for challenge
 
-⭐Start Button
-⭐Up Button
-⭐Left Button
-⭐Down Button
-⭐Right Button
-🟣Score Box
-🟣Time Box
-🟣Game Title
+✔️⭐Start Button
+✔️⭐Up Button
+✔️⭐Left Button
+✔️⭐Down Button
+✔️⭐Right Button
+✔️🟣Score Box
+✔️🟣Time Box
+✔️🟣Game Title
 🟣Snake Style
-🟣Mouse Style
+✔️🟣Mouse Style
 ❓Snake Opens Mouth When Near Mouse?
 */
 
