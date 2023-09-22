@@ -64,7 +64,7 @@ function spawnMouse() {
 }
 
 const mouseImage = new Image();
-mouseImage.src = 'mouse-transparent-background-smol.png';
+mouseImage.src = './images/mouse-transparent-background-smol.png';
 mouseImage.onload = function () { //mouse appears every time game is loaded fix
     // console.log("Mouse spawn");
     spawnMouse();
