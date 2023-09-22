@@ -1,6 +1,6 @@
 /*
-💡If growth too challenging, after eating mouse space turns into empty space that can either cause game over or just a simple empty space
-💡Maybe after mouse is eaten, random block spaces appear for challenge
+✖️💡If growth too challenging, after eating mouse space turns into empty space that can either cause game over or just a simple empty space
+✖️💡Maybe after mouse is eaten, random block spaces appear for challenge
 
 ✔️⭐Start Button
 ✔️⭐Up Button
@@ -10,16 +10,25 @@
 ✔️🟣Score Box
 ✔️🟣Time Box
 ✔️🟣Game Title
-🟣Snake Style
+✔️🟣Snake Style
 ✔️🟣Mouse Style
-❓Snake Opens Mouth When Near Mouse?
+✖️❓Snake Opens Mouth When Near Mouse?
 
 
-What would you do differently?
-What are you most proud of?
-What would you do next?
-How did you plan your project?
-What did you learn?
+🤔What would you do differently?
+🅰️ I would add more customization to the snake itself. Make it look more....snake-ey?
+
+🤔What are you most proud of?
+🅰️ The snake tail trailing in a proper way behind the snake head in the controlSnake function. Essentially, the snake isn't growing the way our eyes perceive it. When the snake head touches the mouse, a new head grows, and the old head trails behind, becoming the "tail". The control function is basically controlling all the heads to follow the controls at the part in the grid that the function was called. 
+
+🤔What would you do next?
+🅰️ Modify the game to work on a phone browser, specifically my phone browser. Just for fun.
+
+🤔How did you plan your project?
+🅰️ I wanted the premise to work before anything else. Snake can move around game board, mouse can spawn randomly on game board, snake head touches mouse then mouse disappears. This ensures that the "idea" of the game works, and I get the bare minimum done for the project. The next level is other gameplay aspects such as the snake growing, the score, and the timer. This assures another level of gameplay. After that is "making things pretty" by adding a disappearing start/game over/game win button, screen arrows for directional control. These were last minute aesthetics that didn't affect gameplay or function, but made everything nicer to look at.
+
+🤔What did you learn?
+🅰️ Simple games like this are full of what I would consider illusions to convince the players that certian events are happening. Aka: snake tail growing.
 */
 
 const startButtonBox = document.getElementsByClassName('start-button-box');
@@ -171,8 +180,8 @@ function controlSnake() {
         // console.log("move right");
     };
 
+    // If the snake's head is out of bounds, it's a collision with the wall
     if (newHead.x < 0 || newHead.x >= canvas.width || newHead.y < 0 || newHead.y >= canvas.height) {
-        // If the snake's head is out of bounds, it's a collision with the wall
         gameOver();
         return;
     };
@@ -188,7 +197,7 @@ function controlSnake() {
     checkMouseCollision();
 
     if (!ateMouse) {
-        // If the snake didn't eat the mouse, remove the last element to keep the length constant
+        // If the snake "ate" a mouse, a new head gets added to the array
         snake.pop();
     };
     for (let i = 1; i < snake.length; i++) {
