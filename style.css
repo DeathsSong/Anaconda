@@ -95,21 +95,25 @@ h6 {
 #timer {
     color: white;
     position: absolute;
-    bottom: 500px;
+    bottom: 487px;
     left: 79%;
     border: solid;
     padding: 5px;
-    width: 65px;
+    width: 130px;
+    font-family: cursive;
+    font-size: 28px;
 }
 
 #score {
     color: white;
     position: absolute;
-    bottom: 500px;
-    left: 12%;
+    bottom: 487px;
+    left: 1%;
     border: solid;
     padding: 5px;
-    width: 65px;
+    width: 165px;
+    font-family: cursive;
+    font-size: 28px;
 }
 
 .start-button-box {
