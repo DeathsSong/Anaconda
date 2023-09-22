@@ -129,8 +129,8 @@ function controlSnake() {
         newHead.x += gridSize;
     };
 
+    // If the snake's head is out of bounds, it's a collision with the wall
     if (newHead.x < 0 || newHead.x >= canvas.width || newHead.y < 0 || newHead.y >= canvas.height) {
-        // If the snake's head is out of bounds, it's a collision with the wall
         gameOver();
         return;
     };
@@ -141,7 +141,7 @@ function controlSnake() {
     checkMouseCollision();
 
     if (!ateMouse) {
-        // If the snake didn't eat the mouse, remove the last element to keep the length constant
+        // If the snake "ate" a mouse, a new head gets added to the array
         snake.pop();
     };
     for (let i = 1; i < snake.length; i++) {
@@ -240,7 +240,7 @@ let gameInterval;
 function updateTimer() {
     const currentTime = Date.now();
     const elapsedTime = Math.floor((currentTime - startTime) / 1000); // Calculate elapsed seconds
-    document.getElementById('timer').textContent = `Time: ${elapsedTime} seconds`;
+    document.getElementById('timer').textContent = `Time: ${elapsedTime}`;
 };
 
 function startGame() {
