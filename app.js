@@ -57,7 +57,7 @@ function spawnMouse() {
 const mouseImage = new Image();
 mouseImage.src = 'mouse-transparent-background-smol.png';
 mouseImage.onload = function () { //mouse appears every time game is loaded fix
-    console.log("Mouse spawn");
+    // console.log("Mouse spawn");
     spawnMouse();
     gameLoop();
 };
@@ -89,7 +89,7 @@ function createSnake() {
 };
 
 function createMouse(mouseObject) {
-    console.log("Mouse coordinates:", mouseObject.x, mouseObject.y);
+    // console.log("Mouse coordinates:", mouseObject.x, mouseObject.y);
     //Generate the mice in random, unoccupied positions on the board
     // mouseObject.x = Math.floor(Math.random() * (canvas.width / gridSize)) * gridSize;
     // mouseObject.y = Math.floor(Math.random() * (canvas.height / gridSize)) * gridSize;
@@ -159,16 +159,16 @@ function controlSnake() {
 
     if (direction === 'up') {
         newHead.y -= gridSize;
-        console.log("move up");
+        // console.log("move up");
     } else if (direction === 'down') {
         newHead.y += gridSize;
-        console.log("move down");
+        // console.log("move down");
     } else if (direction === 'left') {
         newHead.x -= gridSize;
-        console.log("move left");
+        // console.log("move left");
     } else if (direction === 'right') {
         newHead.x += gridSize;
-        console.log("move right");
+        // console.log("move right");
     };
 
     if (newHead.x < 0 || newHead.x >= canvas.width || newHead.y < 0 || newHead.y >= canvas.height) {
@@ -180,10 +180,10 @@ function controlSnake() {
     // Add the new head to the beginning of the snake
     snake.unshift(newHead);
 
-    console.log("New head x:", newHead.x);
-    console.log("New head y:", newHead.y);
-    console.log("Canvas width:", canvas.width);
-    console.log("Canvas height:", canvas.height);
+    // console.log("New head x:", newHead.x);
+    // console.log("New head y:", newHead.y);
+    // console.log("Canvas width:", canvas.width);
+    // console.log("Canvas height:", canvas.height);
 
     checkMouseCollision();
 
