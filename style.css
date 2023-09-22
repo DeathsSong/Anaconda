@@ -96,18 +96,20 @@ h6 {
     color: white;
     position: absolute;
     bottom: 500px;
-    right: 15px;
+    left: 79%;
     border: solid;
     padding: 5px;
+    width: 65px;
 }
 
 #score {
-    color: rgb(255, 255, 255);
+    color: white;
     position: absolute;
     bottom: 500px;
-    left: 15px;
+    left: 12%;
     border: solid;
     padding: 5px;
+    width: 65px;
 }
 
 .start-button-box {
@@ -117,7 +119,7 @@ h6 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.623);
     z-index: 1;
     justify-content: center;
     align-items: center;
@@ -125,12 +127,12 @@ h6 {
 }
 
 .start-screen {
-    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
     color: rgb(255, 255, 255);
     padding: 20px;
     text-align: center;
     border-radius: 5px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0);
     position: absolute;
       top: 50%;
       left: 50%;
@@ -139,5 +141,73 @@ h6 {
 }
 
 #up-arrow {
-    
+    background-image: url(./transparent-arrow-up.png);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 77px;
+    width: 60px;
+    position: absolute;
+    bottom: 360px;
+    left: 70px;
+    cursor: pointer;
+    border: solid;
+}
+
+#left-arrow {
+    background-image: url(./transparent-arrow-left.png);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 60px;
+    width: 77px;
+    position: absolute;
+    bottom: 302px;
+    left: 25px;
+    cursor: pointer;
+    border: solid;
+}
+
+#down-arrow {
+    background-image: url(./transparent-arrow-down.png);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 77px;
+    width: 60px;
+    position: absolute;
+    bottom: 227px;
+    left: 70px;
+    cursor: pointer;
+    border: solid;
+}
+
+#right-arrow {
+    background-image: url(./transparent-arrow-right.png);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 60px;
+    width: 77px;
+    position: absolute;
+    bottom: 302px;
+    left: 100px;
+    cursor: pointer;
+    border: solid;
+}
+
+#button-start {
+    border: transparent;
+    display: block;
+    background-image: url(./start.png);
+    border-radius: 10px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 420px;
+    height: 172px;
+    background-position: center center;
 }

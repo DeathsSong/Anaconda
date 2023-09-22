@@ -13,6 +13,13 @@
 🟣Snake Style
 ✔️🟣Mouse Style
 ❓Snake Opens Mouth When Near Mouse?
+
+
+What would you do differently?
+What are you most proud of?
+What would you do next?
+How did you plan your project?
+What did you learn?
 */
 
 const startButtonBox = document.getElementsByClassName('start-button-box');
@@ -280,7 +287,7 @@ let gameInterval;
 function updateTimer() {
     const currentTime = Date.now();
     const elapsedTime = Math.floor((currentTime - startTime) / 1000); // Calculate elapsed seconds
-    document.getElementById('timer').textContent = `Time: ${elapsedTime} seconds`;
+    document.getElementById('timer').textContent = `Time: ${elapsedTime}`;
 };
 
 function startGame() {
